@@ -36,7 +36,7 @@ app.get('/weather', (req, res) =>{
         return res.send({error})
     } 
     if (latitude && longitude && location) {
-        weather(latitude, longitude, (error, forecast) => {
+        weather(latitude, longitude, (error, forecast, {humidity, windSpeed, windGust, uvIndex, visibility} = {}) => {
             if (error) {
                 return res.send({error})
             }
@@ -44,7 +44,11 @@ app.get('/weather', (req, res) =>{
                 return res.send({
                         forecast,
                         location,
-                        address: address
+                        humidity,
+                        windSpeed,
+                        windGust,
+                        uvIndex,
+                        visibility
                     });
             }
         })

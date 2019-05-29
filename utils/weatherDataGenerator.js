@@ -8,8 +8,8 @@ request({url, json: true}, (error, { body }) => {
     if(body.error) {
         callback(response.body.error, undefined);
     } else {
-        const {currently} = body;
-        callback(undefined,`${body.daily.data[0].summary} It is currently ${currently.temperature} degress out. There is a ${currently.precipProbability}% chance of rain`);
+        const {humidity, windSpeed, windGust, uvIndex, visibility, temperature, precipProbability} = body.currently;
+        callback(undefined,`${body.daily.data[0].summary} It is currently ${temperature} degress out. There is a ${precipProbability}% chance of rain`, {humidity, windSpeed, windGust, uvIndex, visibility});
     }
     
 });
