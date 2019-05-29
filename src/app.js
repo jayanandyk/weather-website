@@ -1,11 +1,12 @@
 const express = require('express');
 const path = require('path');
-const portNumber = 3000;
-const app = express();
 const hbs = require('hbs');
 const geoCode = require('../utils/geoCodeGenerator');
 const weather = require('../utils/weatherDataGenerator');
 
+
+const app = express();
+const portNumber = process.env.PORT || 3000;
 const staticHtmlFilesDirectory = path.join(__dirname, '../public');
 
 app.set('views', path.join(__dirname, '../templates/views'));
